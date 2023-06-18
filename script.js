@@ -22,6 +22,9 @@ class Wednesdayle {
 		this.enter = document.getElementById('enter');
 		this.enter.addEventListener('click', this.submit.bind(this));
 
+		this.resetBtn = document.getElementById('reset');
+		this.resetBtn.addEventListener('click', this.reset.bind(this));
+
 		this.dropdown = document.getElementById('dropdown');
 		document.getElementById('close-dropdown').addEventListener('click', this.closeDropdown.bind(this));
 
@@ -66,13 +69,28 @@ class Wednesdayle {
 		for (let i = 0; i < this.boxes.length; ++i) {
 			if (word[i].toUpperCase() != this.boxes[i].innerText.toUpperCase()) {
 				this.notword.style.display = "block";
+				this.resetBtn.style.display = "block";
 				this.active = false;
 				return;
 			}
 		}
 
 		this.theword.style.display = "block";
+		this.resetBtn.style.display = "block";
 		this.active = false;
+	}
+
+	reset() {
+		console.log("sfa");
+		this.active = true;
+		for (let i = 0; i < this.boxes.length; ++i) {
+			this.boxes[i].innerText = '';
+		}
+		this.nextBox = 0;
+
+		this.theword.style.display = "none";
+		this.notword.style.display = "none";
+		this.resetBtn.style.display = "none";
 	}
 
 	buttonPush(event) {

@@ -32,21 +32,31 @@ main {
 	color: whitesmoke;
 	background-color: slategray;
 	border-bottom: 2px solid darkslategray;
-	padding: 2rem 2rem 5rem 4rem;
+	padding: 2rem;
 	font-weight: 600;
 	font-size: 1.2rem;
 	z-index: 1;
 }
 
 #close-dropdown {
+	display: block;
 	font-family: 'Times New Roman', Times, serif;
 	color: whitesmoke;
 	background-color: unset;
 	border: none;
-	font-size: 3rem;
-	position: absolute;
-	bottom: 1rem;
-	left: 1rem;
+	font-size: 1rem;
+	padding: 0.5rem;
+	width: 3rem;
+	aspect-ratio: 1 / 1;
+	border-radius: 1rem;
+	border: 1px solid whitesmoke;
+}
+
+#dropdown-container {
+	position: relative;
+	width: 30rem;
+	min-height: 25vh;
+	margin: 0 auto;
 }
 
 #dropdown h1 {
@@ -54,11 +64,13 @@ main {
 	font-size: 2rem;
 	text-decoration: underline;
 	margin-bottom: 1rem;
+	width: 100%;
 }
 
 #dropdown p {
 	font-weight: inherit;
-	margin: 1rem 0;
+	margin: 1rem auto;
+	width: 100%;
 }
 
 main>h1 {
@@ -110,7 +122,10 @@ main>h1 {
 	justify-content: center;
 }
 
-#msgbox>div {
+#msgbox>div,
+#reset {
+	border: none;
+	box-shadow: none;
 	background-color: #000c;
 	color: whitesmoke;
 	font-weight: 600;
@@ -120,9 +135,21 @@ main>h1 {
 	margin: 0 auto;
 }
 
+#reset {
+	padding: 0.5rem 1rem;
+	border: 3px solid black;
+	margin-top: 1rem;
+}
+
+#reset:active {
+	background-color: slategray;
+}
+
 #theword,
-#notword {
+#notword,
+#reset {
 	display: none;
+	font-family: 'Barlow Condensed', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /*
@@ -171,6 +198,11 @@ asdn
 		max-width: 80vw;
 		min-width: 25vh;
 		gap: 2vw;
+	}
+
+	#msgbox>div,
+	#reset {
+		font-size: 1.75rem;
 	}
 
 	#game-area>div {
