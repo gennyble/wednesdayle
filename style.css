@@ -1,3 +1,9 @@
+@font-face {
+	font-family: 'Barlow Condensed';
+	src: url("BarlowCondensed-Medium.ttf") format("truetype");
+	font-weight: 500;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -7,26 +13,116 @@
 body {
 	width: 100vw;
 	height: 100vh;
+	background-color: burlywood;
 }
 
 main {
+	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
+}
+
+#dropdown {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100vw;
+	color: whitesmoke;
+	background-color: slategray;
+	border-bottom: 2px solid darkslategray;
+	padding: 2rem 2rem 5rem 4rem;
+	font-weight: 600;
+	font-size: 1.2rem;
+	z-index: 1;
+}
+
+#close-dropdown {
+	font-family: 'Times New Roman', Times, serif;
+	color: whitesmoke;
+	background-color: unset;
+	border: none;
+	font-size: 3rem;
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+}
+
+#dropdown h1 {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-size: 2rem;
+	text-decoration: underline;
+	margin-bottom: 1rem;
+}
+
+#dropdown p {
+	font-weight: inherit;
+	margin: 1rem 0;
+}
+
+main>h1 {
+	text-align: center;
+	color: whitesmoke;
+	text-shadow: black 2px 2px;
+	font-size: 3rem;
+	margin: 0.5rem;
+	padding: 0;
+	text-decoration: underline;
 }
 
 #game-area {
+	position: relative;
 	margin: 0 auto;
-	padding: 2rem;
-	width: 32rem;
+	padding: 0 0 1rem 0;
+	width: 22rem;
+	box-sizing: content-box;
 	aspect-ratio: 1 / 1;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
 }
 
-#game-area div {
-	border: 2px solid black;
+#game-area>div {
+	font-family: 'Barlow Condensed', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border: 3px solid darkcyan;
+	border-radius: 0.25rem;
+	background-color: powderblue;
+	font-size: 5rem;
+	text-align: center;
+	color: darkslategray;
+	/* this seems wrong and bad, but it works, so */
+	line-height: 0;
+}
+
+#msgbox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#msgbox>div {
+	background-color: #000c;
+	color: whitesmoke;
+	font-weight: 600;
+	padding: 1rem;
+	font-size: 2rem;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+#theword,
+#notword {
+	display: none;
 }
 
 /*
@@ -36,10 +132,12 @@ asdn
 */
 #keyboard {
 	padding-bottom: 2rem;
+	font-family: 'Barlow Condensed', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #row0,
-#row1 {
+#row1,
+#row2 {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -47,18 +145,49 @@ asdn
 	margin: 0.5rem 0;
 }
 
-button {
-	border: 1px solid salmon;
-	border-radius: 0.2rem;
-	width: 10vw;
-	height: 10vw;
+#keyboard button {
+	font-family: inherit;
+	border: 2px solid salmon;
+	background-color: lightsalmon;
+	color: white;
+	text-shadow: black 2px 2px;
+	border-radius: 0.5rem;
+	width: 5.5rem;
+	height: 5.5rem;
+	font-size: 3.5rem;
+}
+
+#keyboard #delete,
+#keyboard #enter {
+	width: 11.5rem;
+	height: 4rem;
+	font-size: 2.75rem;
 }
 
 @media (max-width: 40rem) {
 
 	/* Modile target */
 	#game-area {
-		width: 75vw;
+		max-width: 80vw;
+		min-width: 25vh;
+		gap: 2vw;
+	}
+
+	#game-area>div {
+		font-size: 4rem;
+	}
+
+	#keyboard button {
+		width: 4rem;
+		height: 4rem;
+		font-size: 2.5rem;
+	}
+
+	#keyboard #delete,
+	#keyboard #enter {
+		width: 8.5rem;
+		height: 3rem;
+		font-size: 1.75rem;
 	}
 }
 
